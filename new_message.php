@@ -3,6 +3,8 @@ session_start();
 include "includes/db_connect.php";
 $read_query = "SELECT * FROM `user` ";
 $result = mysqli_query($conn, $read_query);
+$read_query_image = "SELECT * FROM emoji";
+$images_result = mysqli_query($conn, $read_query_image);
  ?>
 <!DOCTYPE html>
 <html>
@@ -34,12 +36,14 @@ $result = mysqli_query($conn, $read_query);
 				</div>
 		<input type="submit" name="submit" value="Create1">
 	</form>
-
+	<img src="uploads/hell.png">
 <?php  
 
 if (isset($_POST['submit'])) {
-			$name = $_SESSION['user'];
 			$code = $_POST['message'];
+			$name = $_SESSION['user'];
+
+			
 			$locale = $_POST['username'];
 			$image = date(DATE_ATOM, mktime(0, 0, 0, 7, 1, 2000));
 			$q_create = "INSERT INTO `history`(`username`, `message`, `recipient`, `date_added`) VALUES ('$name','$code','$locale','$image')";

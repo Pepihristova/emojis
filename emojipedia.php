@@ -1,6 +1,5 @@
 <?php 
 session_start();
-echo $_SESSION['image'];
 
 $user = $_SESSION['user'];
 include "includes/db_connect.php";
@@ -19,18 +18,13 @@ $images_result = mysqli_query($conn, $read_query);
     <div class="row">
      <?php if(mysqli_num_rows($images_result) > 0){ ?>
       <?php while($row = mysqli_fetch_assoc($images_result)){ ?>
-        <div class="col-md-4 col-sm-6 portfolio-item">
-          <img class="img-fluid" src="uploads/<?= $row['image_emoji'] ?>" alt="">
+        <div class="col-lg-4 col-md-4 col-sm-6 portfolio-item"">
+         <p>The string of this emoji is:</p>
+          <img style="width: 20%;" class="img-fluid" src="uploads/<?= $row['image_emoji'] ?>" 
           <div class="portfolio-caption">
-            <h4><?= $row['user'] ?></h4>
-            <p class="text-muted"><a href="download_image.php?image=<?= $row['image_emoji'] ?>">Click to download</a></p>
-            <?php 
-            	if ($row['user']==$user) {
-            		echo ""
-            		?> <p class="text-muted"><a href="delete.php?id=<?=$row['id']?>">Delete</a></p>
-             <?php 
-            	}
-             ?>
+            <p>The string of this emoji is:</p>
+            <h4><?= $row['string'] ?></h4>
+            <p>If you want to use it, copy it</p>
           </div>
         </div> 
       <?php } ?>  
