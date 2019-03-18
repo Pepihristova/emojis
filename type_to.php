@@ -44,7 +44,10 @@ $read_query2 = "SELECT * FROM `emoji` WHERE 1";
 					<td>
 						<?php 
 						$message = $row1['message'];
-						$emoji_replace = str_replace('hi', '<img src="uploads/hell.png">', $message);
+						$chars = ['hi',':heart_eyes:',':sob:',':smiling_imp:',':hear_no_evil:',':--:',':conf',':)',':kiss',':(',':O'];
+						$icons = ['<img src="uploads/cry_laugh.png">','<img src="uploads/Heart_Eyes_Emoji.png">','<img src="uploads/cry.png">','<img src="uploads/hell.png">','<img src="uploads/monkey.png">','<img src="uploads/zipper.png">','<img src="uploads/confused.png">','<img src="uploads/happy.png">','<img src="uploads/kiss.png">','<img src="uploads/Weary_Face_Emoji_Icon_ios10.png">','<img src="uploads/wow.png">'];
+
+						$emoji_replace = str_replace($chars, $icons, $message);
 						echo "$emoji_replace";
 						?>
 						
