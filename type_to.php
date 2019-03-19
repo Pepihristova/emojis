@@ -27,7 +27,8 @@ $read_query2 = "SELECT * FROM `emoji` WHERE 1";
 	if (mysqli_num_rows($result1) > 0) {
 		?>
 		<h2>Stepinger</h2>
-		<div class="col-lg-6">
+		<div class="container">
+		<div class="col-lg-12">
 			<table border="1" class="table table-striped">
 				<td>Username</td>
 				<td>Message</td>
@@ -66,6 +67,7 @@ $read_query2 = "SELECT * FROM `emoji` WHERE 1";
 		<?php  
 	}
 	?>
+	</div>
 	<a href="new_message.php">Add a new message</a>
 	<a href="sent_messages.php">See the history of the sent messages</a>
 	<a href="emojipedia.php">See the emojipedia here</a>
