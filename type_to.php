@@ -18,7 +18,7 @@ session_start();
 </head>
 <body>
 	<h1>The story of your message</h1>
-	
+	  <a class="btn btn-default" href="logout.php">Log out</a>
 	<?php 
 	$read_query1 = "SELECT * FROM `history` WHERE recipient = '$filter' ";
 	$result1 = mysqli_query($conn, $read_query1);

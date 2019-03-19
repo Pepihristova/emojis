@@ -3,5 +3,16 @@
 	padding: 0;
 }
 .container{
-	width: 50%;
+	width: 40%;
+}
+body{
+    background-image: url("../uploads/background.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;   
+}
+td{
+	background-color: #fff;
+}
+img{
+	width: 5%;
 }

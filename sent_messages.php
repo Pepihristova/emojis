@@ -18,6 +18,7 @@ $filter = $_SESSION['user'];
 </head>
 <body>
 <h1>The story of your message</h1>
+  <a class="btn btn-default" href="logout.php">Log out</a>
 	
 	<?php 
 	$read_query1 = "SELECT * FROM `history` WHERE username = '$filter' ";
@@ -40,8 +41,16 @@ $result1 = mysqli_query($conn, $read_query1);
 			<?=$row1['username']?>
 		</td>
 		<td>
-			<?=$row1['message']?>
-		</td>
+						<?php 
+						$message = $row1['message'];
+						$chars = ['hi',':heart_eyes:',':sob:',':smiling_imp:',':hear_no_evil:',':--:',':conf',':)',':kiss',':(',':O'];
+						$icons = ['<img src="uploads/cry_laugh.png">','<img src="uploads/Heart_Eyes_Emoji.png">','<img src="uploads/cry.png">','<img src="uploads/hell.png">','<img src="uploads/monkey.png">','<img src="uploads/zipper.png">','<img src="uploads/confused.png">','<img src="uploads/happy.png">','<img src="uploads/kiss.png">','<img src="uploads/Weary_Face_Emoji_Icon_ios10.png">','<img src="uploads/wow.png">'];
+
+						$emoji_replace = str_replace($chars, $icons, $message);
+						echo "$emoji_replace";
+						?>
+						
+					</td>
 		<td>
 			<?=$row1['recipient']?>
 		</td>

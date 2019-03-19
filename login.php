@@ -46,6 +46,7 @@
     <div class="col-sm-offset-2 col-sm-10">
       <button type="submit" class="btn btn-default">Log in</button>
       <a class="btn btn-default" href="new_user.php">Sign in</a>
+      <a class="btn btn-default" href="new_user.php">Log out</a>
     </div>
   </div>
 </form>
