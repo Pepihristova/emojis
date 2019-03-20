@@ -45,7 +45,7 @@ if (isset($_POST['submit'])) {
 
 			
 			$locale = $_POST['username'];
-			$image = date(DATE_ATOM, mktime(0, 0, 0, 7, 1, 2000));
+			$image = date('Y-m-d-h:i:s');
 			$q_create = "INSERT INTO `history`(`username`, `message`, `recipient`, `date_added`) VALUES ('$name','$code','$locale','$image')";
 
 			$result = mysqli_query($conn, $q_create);
