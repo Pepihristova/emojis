@@ -1,10 +1,14 @@
 <?php 
 session_start();
 include "includes/db_connect.php";
-$read_query = "SELECT * FROM `user` ";
+echo $_SESSION['user_id'];
+$id1 = $_SESSION['user_id'];
+$read_query = "SELECT * FROM `user` WHERE `user_id` LIKE '$id1'";
 $result = mysqli_query($conn, $read_query);
 $read_query_image = "SELECT * FROM emoji";
 $images_result = mysqli_query($conn, $read_query_image);
+$read_query_recipient = "SELECT * FROM recipient";
+$recipient_result = mysqli_query($conn, $read_query_recipient);
  ?>
 <!DOCTYPE html>
 <html>
@@ -25,14 +29,15 @@ $images_result = mysqli_query($conn, $read_query_image);
 					<select class="form-control" name="username">
 						<?php if(mysqli_num_rows($result) > 0){ ?>
 							
-							<?php while($row = mysqli_fetch_assoc($result)){ ?>
+							<?php while($row = mysqli_fetch_assoc($recipient_result)){ ?>
 
-								<option value="<?= $row['username'] ?>"><?= $row['username'] ?></option>
+								<option value="<?= $row['recipient_id'] ?>"><?= $row['name'] ?></option>
 
 							<?php } ?>
 
 						<?php } ?>
 					</select>	
+					
 				</div>
 		<input type="submit" name="submit" value="Create1">
 	</form>
@@ -42,12 +47,11 @@ $images_result = mysqli_query($conn, $read_query_image);
 if (isset($_POST['submit'])) {
 			$code = $_POST['message'];
 			$name = $_SESSION['user'];
-
-			
-			$locale = $_POST['username'];
-			$image = date('Y-m-d-h:i:s');
-			$q_create = "INSERT INTO `history`(`username`, `message`, `recipient`, `date_added`) VALUES ('$name','$code','$locale','$image')";
-
+			$id1 = $_SESSION['user_id'];
+			$recipient_friend = $_POST['username'];
+			$date = date('Y-m-d-h:i:s');
+			$q_create = "INSERT INTO `history`(`user_id`, `message`, `recipient_id`, `date_added`) VALUES ('$id1','$code','$recipient_friend','$date')";
+var_dump($q_create);
 			$result = mysqli_query($conn, $q_create);
 
 			if ($result) {

@@ -57,7 +57,7 @@ $result = mysqli_query($conn, $user_exist);
 
 while ($row= mysqli_fetch_assoc($result)) {
 		
-			
+		$id = $row['user_id'];
 		$name1=$row['username'];
 		$pass1=$row['pass'];
 
@@ -67,11 +67,13 @@ while ($row= mysqli_fetch_assoc($result)) {
 		$pass =$_POST['pass'];
 
 		if ($user===$name1 && $pass===$pass1) {
+      $id1 = $id;
 			header('Location: type_to.php');
 		}else{
 			echo "Wrong username or password! Please try again!";
 		}
 		$_SESSION['user'] = $user;
+    $_SESSION['user_id'] = $id1;
 	}
 }
  ?>

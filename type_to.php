@@ -13,6 +13,8 @@ session_start();
 	$title = 'Read';
 	include "includes/db_connect.php";
 	echo $_SESSION['user'];
+	echo $_SESSION['user_id'];
+	$id1 = $_SESSION['user_id'];
 	$filter = $_SESSION['user'];
 	?>
 </head>
@@ -20,7 +22,7 @@ session_start();
 	<h1>The story of your message</h1>
 	  <a class="btn btn-default" href="logout.php">Log out</a>
 	<?php 
-	$read_query1 = "SELECT * FROM `history` WHERE recipient = '$filter' ";
+	$read_query1 = "SELECT user.username, history.message, recipient.name, history.date_added, user.user_id FROM `history` JOIN user ON user.user_id=history.user_id JOIN recipient ON recipient.recipient_id=history.recipient_id WHERE user.user_id = $id1 ORDER BY `date_added` DESC";
 	$result1 = mysqli_query($conn, $read_query1);
 $read_query2 = "SELECT * FROM `emoji` WHERE 1";
 	$result2 = mysqli_query($conn, $read_query2);
@@ -32,7 +34,7 @@ $read_query2 = "SELECT * FROM `emoji` WHERE 1";
 			<table border="1" class="table table-striped">
 				<td>Username</td>
 				<td>Message</td>
-				<td>Me</td>
+				<td>Friend</td>
 				<td>Date</td>
 			</div>
 			<?php
@@ -41,6 +43,7 @@ $read_query2 = "SELECT * FROM `emoji` WHERE 1";
 				<tr>
 					<td>
 						<?=$row1['username']?>
+						
 					</td>
 					<td>
 						<?php 
@@ -54,31 +57,26 @@ $read_query2 = "SELECT * FROM `emoji` WHERE 1";
 							if (mysqli_num_rows($emoji_res) > 0) {
 
 								$emoji = mysqli_fetch_assoc($emoji_res);
-								$icon = '<img width="15px"src="uploads/' . $emoji['image_emoji'] . '">';
+								$icon = '<img width="150px"src="uploads/' . $emoji['image_emoji'] . '">';
 								
 								if(!empty($icon)){
-									// $m = $icon;
 									$message_arr[$i] = $icon;
 								}
 							}							
 						}						
-						 // while ($row2 = mysqli_fetch_assoc($result2)) {
-							// $char=$row2['string'];
-							// $icons = '<img src="' . $row2['image_emoji'] . '"';
-						
-							
-						// }
-
-						// $emoji_replace = str_replace($char, $icons, $message);
-						// echo "$emoji_replace";
-						
+						 
 						$message = implode(' ', $message_arr);
 						echo $message;
 						?>
 						
 					</td>
 					<td>
-						<?=$row1['recipient']?>
+					<a href="personal_message.php"><?php 
+					echo $row1['name'];
+						$friend = $row1['name'];
+						$_SESSION['friend'] = $friend;
+					 ?></a>
+
 					</td>
 					<td>
 						<?=$row1['date_added']?>
