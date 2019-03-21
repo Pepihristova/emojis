@@ -3,7 +3,7 @@ session_start();
 include "includes/db_connect.php";
 echo $_SESSION['user_id'];
 $id1 = $_SESSION['user_id'];
-$read_query = "SELECT * FROM `user` WHERE `user_id` LIKE '$id1'";
+$read_query = "SELECT * FROM `user`";
 $result = mysqli_query($conn, $read_query);
 $read_query_image = "SELECT * FROM emoji";
 $images_result = mysqli_query($conn, $read_query_image);
@@ -27,7 +27,7 @@ $recipient_result = mysqli_query($conn, $read_query_recipient);
 			<div class="form-row">				
 				<div class="col-sm-5">
 					<select class="form-control" name="username">
-						<?php if(mysqli_num_rows($result) > 0){ ?>
+						<?php if(mysqli_num_rows($recipient_result) > 0){ ?>
 							
 							<?php while($row = mysqli_fetch_assoc($recipient_result)){ ?>
 
