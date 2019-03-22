@@ -63,7 +63,9 @@ $result = mysqli_query($conn, $user_exist);
       $q_create = "INSERT INTO `user`(`username`, `pass`) VALUES ('$name','$pass')";
 
       $result = mysqli_query($conn, $q_create);
+      $q_create_recipient = "INSERT INTO `recipient`(`name`) VALUES ('$name')";
 
+      $result = mysqli_query($conn, $q_create_recipient);
       if ($result) {
         header('Location: login.php');
       }else{
