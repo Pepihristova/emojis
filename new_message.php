@@ -21,11 +21,13 @@ $recipient_result = mysqli_query($conn, $read_query_recipient);
 </head>
 <body>
 <form action="" method="post">
-		<input type="text" name="message" placeholder="code">
+	<label>Type your message here</label>
+		<input type="text" class="form-control" name="message" placeholder="code">
 		<div class="row justify-content-md-center mb-2">
 		<form action="" method="get">
 			<div class="form-row">				
 				<div class="col-sm-5">
+					<label>Choose your friend</label>
 					<select class="form-control" name="username">
 						<?php if(mysqli_num_rows($recipient_result) > 0){ ?>
 							
@@ -39,9 +41,8 @@ $recipient_result = mysqli_query($conn, $read_query_recipient);
 					</select>	
 					
 				</div>
-		<input type="submit" name="submit" value="Create1">
+		<p><input type="submit" name="submit" class="btn btn-default" value="Send"></p>
 	</form>
-	<img src="uploads/hell.png">
 <?php  
 
 if (isset($_POST['submit'])) {

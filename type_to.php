@@ -19,9 +19,9 @@ session_start();
 	?>
 </head>
 <body>
-	<h1>The story of your message</h1>
-	  <a class="btn btn-default" href="logout.php">Log out</a>
-	<?php 
+	<a class="btn btn-default" href="logout.php">Log out</a>
+	<h1>The story of your messages</h1>
+	  <?php 
 	$read_query1 = "SELECT user.username, history.message, recipient.name, history.date_added, user.user_id FROM `history` JOIN user ON user.user_id=history.user_id JOIN recipient ON recipient.recipient_id=history.recipient_id WHERE user.user_id = $id1 ORDER BY `date_added` DESC";
 	$result1 = mysqli_query($conn, $read_query1);
 $read_query2 = "SELECT * FROM `emoji` WHERE 1";
@@ -32,9 +32,9 @@ $read_query2 = "SELECT * FROM `emoji` WHERE 1";
 		<div class="container">
 		<div class="col-lg-12">
 			<table border="1" class="table table-striped">
-				<td>Username</td>
+				<td>Sender</td>
 				<td>Message</td>
-				<td>Friend</td>
+				<td>Recipient</td>
 				<td>Date</td>
 			</div>
 			<?php
@@ -71,11 +71,11 @@ $read_query2 = "SELECT * FROM `emoji` WHERE 1";
 						
 					</td>
 					<td>
-					<a href="personal_message.php"><?php 
+					<?php 
 					echo $row1['name'];
 						$friend = $row1['name'];
 						$_SESSION['friend'] = $friend;
-					 ?></a>
+					 ?>
 
 					</td>
 					<td>
@@ -90,9 +90,24 @@ $read_query2 = "SELECT * FROM `emoji` WHERE 1";
 	}
 	?>
 	</div>
-	<a href="new_message.php">Add a new message</a>
-	<a href="sent_messages.php">See the history of the sent messages</a>
-	<a href="emojipedia.php">See the emojipedia here</a>
+	<center><p><a class="btn btn-default" href="new_message.php">Add a new message</a></p></center>
+	<center><p><a class="btn btn-default" href="sent_messages.php">See the history of the recieved messages</a></p></center>
+	<center><p><a class="btn btn-default" href="emojipedia.php">See the emojipedia here</a></p></center>
+	<center><p><a class="btn btn-default" href="personal_message.php">See your personal messages</a></p></center>
 </div>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

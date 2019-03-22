@@ -33,9 +33,9 @@ $read_query2 = "SELECT * FROM `emoji` WHERE 1";
 		<div class="container">
 		<div class="col-lg-12">
 			<table border="1" class="table table-striped">
-				<td>Username</td>
+				<td>Sender</td>
 				<td>Message</td>
-				<td>Friend</td>
+				<td>Recipient</td>
 				<td>Date</td>
 			</div>
 			<?php
@@ -71,11 +71,11 @@ $read_query2 = "SELECT * FROM `emoji` WHERE 1";
 						
 					</td>
 					<td>
-					<a href="personal_message.php"><?php 
+					<?php 
 					echo $row1['name'];
 						$friend = $row1['name'];
 						$_SESSION['friend'] = $friend;
-					 ?></a>
+					 ?>
 
 					</td>
 					<td>
@@ -90,9 +90,10 @@ $read_query2 = "SELECT * FROM `emoji` WHERE 1";
 	}
 	?>
 	</div>
-	<a href="new_message.php">Add a new message</a>
-	<a href="sent_messages.php">See the history of the sent messages</a>
-	<a href="emojipedia.php">See the emojipedia here</a>
+	<center><p><a class="btn btn-default" href="new_message.php">Add a new message</a></p></center>
+	<center><p><a class="btn btn-default" href="type_to.php">See the history of the sent messages</a></p></center>
+	<center><p><a class="btn btn-default" href="emojipedia.php">See the emojipedia here</a></p></center>
+	<center><p><a class="btn btn-default" href="personal_message.php">See your personal messages</a></p></center>
 </div>
 </body>
 </html>

@@ -32,5 +32,7 @@ $images_result = mysqli_query($conn, $read_query);
   </div>
 </div>
 </section>
+<center><p><a class="btn btn-default" href="new_message.php">Add a new message</a></p></center>
+  
 
 
