@@ -65,8 +65,11 @@ while ($row= mysqli_fetch_assoc($result)) {
 	if (!empty($_POST)) {
      $user = mysqli_real_escape_string( $conn, $_POST['user']);
      $pass = mysqli_real_escape_string( $conn, $_POST['pass']);
-
-		if ($user===$name1 && $pass===$pass1) {
+     $options = [
+     'cost' => 12,
+ ];
+$password_hashed = password_hash($pass, PASSWORD_BCRYPT, $options);
+		if ($user===$name1 && (password_verify($pass, $password_hashed))) {
       $id1 = $id;
 			header('Location: type_to.php');
 		}else{
@@ -79,3 +82,8 @@ while ($row= mysqli_fetch_assoc($result)) {
  ?>
 </body>
 </html>
+
+
+
+
+

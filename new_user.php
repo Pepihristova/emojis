@@ -60,7 +60,14 @@ $result = mysqli_query($conn, $user_exist);
        $name = mysqli_real_escape_string( $conn, $_POST['user']);
 $pass = mysqli_real_escape_string($conn, $_POST['pass']);
 $pass_confirm = mysqli_real_escape_string( $conn, $_POST['pass_confirm']);
-      $q_create = "INSERT INTO `user`(`username`, `pass`) VALUES ('$name','$pass')";
+if ($pass === $pass_confirm ) {
+
+
+$options = [
+    'cost' => 12,
+];
+$password_hashed = password_hash( $pass, PASSWORD_BCRYPT, $options);
+      $q_create = "INSERT INTO `user`(`username`, `pass`) VALUES ('$name','$password_hashed')";
 
       $result = mysqli_query($conn, $q_create);
       $q_create_recipient = "INSERT INTO `recipient`(`name`) VALUES ('$name')";
@@ -72,6 +79,13 @@ $pass_confirm = mysqli_real_escape_string( $conn, $_POST['pass_confirm']);
         echo mysqli_error($conn);
       }
     }
+    }
  ?>
 </body>
 </html>
+
+
+
+
+
+
