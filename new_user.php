@@ -57,9 +57,9 @@ $user_exist = "SELECT * FROM user";
 $result = mysqli_query($conn, $user_exist);
 
 	if (isset($_POST['submit'])) {
-      $name = $_POST['user'];
-      $pass = $_POST['pass'];
-      $pass_confirm = $_POST['pass_confirm'];
+       $name = mysqli_real_escape_string( $conn, $_POST['user']);
+$pass = mysqli_real_escape_string($conn, $_POST['pass']);
+$pass_confirm = mysqli_real_escape_string( $conn, $_POST['pass_confirm']);
       $q_create = "INSERT INTO `user`(`username`, `pass`) VALUES ('$name','$pass')";
 
       $result = mysqli_query($conn, $q_create);

@@ -45,7 +45,7 @@ $recipient_result = mysqli_query($conn, $read_query_recipient);
 <?php  
 
 if (isset($_POST['submit'])) {
-			$code = $_POST['message'];
+			 $code = mysqli_real_escape_string( $conn, $_POST['message']);
 			$name = $_SESSION['user'];
 			$id1 = $_SESSION['user_id'];
 			$recipient_friend = $_POST['username'];

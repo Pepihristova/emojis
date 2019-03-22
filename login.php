@@ -63,8 +63,8 @@ while ($row= mysqli_fetch_assoc($result)) {
 
 	
 	if (!empty($_POST)) {
-		$user =$_POST['user'];
-		$pass =$_POST['pass'];
+     $user = mysqli_real_escape_string( $conn, $_POST['user']);
+     $pass = mysqli_real_escape_string( $conn, $_POST['pass']);
 
 		if ($user===$name1 && $pass===$pass1) {
       $id1 = $id;
