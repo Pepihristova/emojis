@@ -16,7 +16,7 @@ session_start();
 	<?php 
 	if (isset($_POST)) {
 		session_destroy();
-		header('Location:login.php');
+		header('Location:index.php');
 	}
 
 
